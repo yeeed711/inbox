@@ -1,50 +1,54 @@
-# Welcome to your Expo app 👋
+# 프로젝트 개요
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**Inbox App**은 일상에서 떠오르는 아이디어를 쉽게 캡처하고 저장할 수 있는 개인 데이터베이스 애플리케이션입니다. 사용자는 텍스트, 사진, 음성 등 다양한 형태로 아이디어를 기록하고, 이를 자신만의 저장소에 안전하게 보관할 수 있습니다.
 
-## Get started
+## 핵심 가치
 
-1. Install dependencies
+- 나만의 데이터베이스 구축: 개인의 아이디어와 생각을 체계적으로 저장하고 관리
+- 플랫폼 독립성: 특정 플랫폼에 종속되지 않는 자유로운 데이터 관리
+- 사용자 중심 설계: 직관적인 인터페이스로 누구나 쉽게 사용 가능
 
-   ```bash
-   npm install
-   ```
+## 주요 기능
 
-2. Start the app
+### 다양한 형식의 아이디어 캡처
 
-   ```bash
-   npx expo start
-   ```
+- 텍스트 메모
+- 사진 저장
+- 음성 녹음
 
-In the output, you'll find options to open the app in a
+### 메타데이터 자동 기록
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- 위치 정보 (GPS)
+- 시간 정보
+- 컨텍스트 데이터
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 유연한 저장 시스템
 
-## Get a fresh project
+- 웹훅 기반 저장 메커니즘
+- 이벤트 기반 아키텍처
+- 사용자 정의 저장소 연결 가능
 
-When you're ready, run:
+### 기술 스택
 
-```bash
-npm run reset-project
-```
+- 프론트엔드: iOS 네이티브 개발 (Swift/SwiftUI)
+- 백엔드: 웹훅 기반 이벤트 처리 시스템
+- 데이터 저장: 사용자 선택 저장소 지원
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 개발 로드맵
 
-## Learn more
+MVP (Minimum Viable Product)
 
-To learn more about developing your project with Expo, look at the following resources:
+1. 기본 아이디어 캡처 기능 (텍스트, 사진, 음성)
+2. 메타데이터 자동 추가 (시간, 위치)
+3. 웹훅 기반 저장 시스템 구현
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 향후 개발 계획
 
-## Join the community
+1. 인터프리터(시스템 프롬프터) 기능 추가
+2. 고급 검색 및 필터링 기능
+3. 다양한 외부 저장소 연동 확장
+4. 크로스 플랫폼 지원
 
-Join our community of developers creating universal apps.
+## 설치 및 사용 방법
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- (개발 완료 후 추가 예정)
