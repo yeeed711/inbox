@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 3.0.0"
+    "version": ">= 3.0.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "simulator": {
@@ -14,18 +15,6 @@
       "distribution": "internal",
       "env": {
         "APP_ENV": "development"
-      },
-      "android": {
-        "buildType": "apk"
-      }
-    },
-    "preview": {
-      "distribution": "internal"
-    },
-    "staging": {
-      "distribution": "internal",
-      "env": {
-        "APP_ENV": "staging"
       },
       "android": {
         "buildType": "apk"
