@@ -1,50 +1,120 @@
-# Welcome to your Expo app 👋
+# Smart Inbox App 📧
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+## 📦 Package Manager
 
-1. Install dependencies
+**This project uses [bun](https://bun.sh) as the package manager.**
+
+For detailed package management rules, see [PACKAGE_RULES.md](./PACKAGE_RULES.md)
+
+## 🚀 Get started
+
+1. **Install bun** (if not already installed)
 
    ```bash
-   npm install
+   curl -fsSL https://bun.sh/install | bash
    ```
 
-2. Start the app
+2. **Install dependencies**
 
    ```bash
-   npx expo start
+   bun install
    ```
 
-In the output, you'll find options to open the app in a
+3. **Start the app**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   bun start
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📱 Development
 
-## Get a fresh project
-
-When you're ready, run:
+### Running on different platforms
 
 ```bash
-npm run reset-project
+# iOS Simulator
+bunx expo run:ios
+
+# Android Emulator
+bunx expo run:android
+
+# Web browser
+bun run web
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Installing new packages
 
-## Learn more
+```bash
+# Regular dependencies
+bun add package-name
 
-To learn more about developing your project with Expo, look at the following resources:
+# Development dependencies
+bun add -d package-name
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+# Expo packages (recommended)
+bunx expo install expo-package-name
+```
 
-## Join the community
+## 🏗️ Project Structure
 
-Join our community of developers creating universal apps.
+```
+inbox/
+├── app/                 # App screens (file-based routing)
+├── components/          # Reusable UI components
+├── constants/           # App constants
+├── contexts/           # React contexts
+├── hooks/              # Custom React hooks
+├── assets/             # Images, fonts, etc.
+└── PACKAGE_RULES.md    # Package management guidelines
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🎨 Features
+
+- **Smart Inbox Interface**: Modern email-like UI with dark theme
+- **Native Components**: Using `@expo/ui` for iOS and Android optimization
+- **Memo Creation**: Modal-based note taking functionality
+- **Search & Filter**: Real-time inbox item filtering
+- **Gradient Floating Button**: Custom styled action button
+
+## 🔧 Tech Stack
+
+- **Framework**: Expo (React Native)
+- **Language**: TypeScript
+- **Package Manager**: bun
+- **UI Components**: @expo/ui, expo-linear-gradient
+- **Navigation**: expo-router (file-based)
+- **Styling**: React Native StyleSheet
+
+## 📋 Development Rules
+
+- ✅ Use `bun` for all package management
+- ✅ Follow the guidelines in [PACKAGE_RULES.md](./PACKAGE_RULES.md)
+- ❌ Do not use `npm` or `yarn` commands
+- ❌ Do not commit `package-lock.json` or `yarn.lock`
+
+## 🚨 Troubleshooting
+
+### Package issues
+
+1. Clear cache: `bun pm cache rm`
+2. Reinstall: `rm -rf node_modules bun.lock && bun install`
+3. Rebuild native: `bunx expo prebuild --clean`
+
+### Build issues
+
+```bash
+# Clean build
+bunx expo prebuild --clean
+bunx expo run:ios
+```
+
+## 📚 Learn more
+
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial
+- [bun documentation](https://bun.sh/docs): Fast package manager and runtime
+
+---
+
+_Built with ❤️ using Expo and bun_

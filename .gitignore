@@ -3,6 +3,10 @@
 # dependencies
 node_modules/
 
+# Package manager lock files (using bun)
+package-lock.json
+yarn.lock
+
 # Expo
 .expo/
 dist/
@@ -37,3 +41,6 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+ios
+android
