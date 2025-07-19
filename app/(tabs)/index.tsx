@@ -2,8 +2,7 @@ import { FloatingActionButton } from "@/components/FloatingActionButton";
 import { InboxItem } from "@/components/InboxItem";
 import { MemoModal } from "@/components/MemoModal";
 import { SearchInput } from "@/components/SearchInput";
-import type { InboxItem as InboxItemType } from "@/types";
-import { Button } from "@expo/ui/swift-ui";
+import type { InboxItemType } from "@/types";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useState } from "react";
 import {
@@ -12,6 +11,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 
@@ -34,46 +34,72 @@ const SAMPLE_INBOX_ITEMS: InboxItemType[] = [
     id: "1",
     time: "09:30",
     title: "Weekly Team Meeting",
-    badge: {
-      text: "Meeting",
-      color: getRandomBadgeColor(),
-    },
+    badges: [
+      {
+        text: "Meeting",
+        color: getRandomBadgeColor(),
+      },
+      {
+        text: "Urgent",
+        color: getRandomBadgeColor(),
+      },
+    ],
   },
   {
     id: "2",
     time: "14:15",
     title: "Project Review Discussion",
-    badge: {
-      text: "Review",
-      color: getRandomBadgeColor(),
-    },
+    badges: [
+      {
+        text: "Review",
+        color: getRandomBadgeColor(),
+      },
+    ],
   },
   {
     id: "3",
     time: "16:45",
     title: "Client Presentation Prep",
-    badge: {
-      text: "Urgent",
-      color: getRandomBadgeColor(),
-    },
+    badges: [
+      {
+        text: "Urgent",
+        color: getRandomBadgeColor(),
+      },
+      {
+        text: "Client",
+        color: getRandomBadgeColor(),
+      },
+      {
+        text: "Presentation",
+        color: getRandomBadgeColor(),
+      },
+    ],
   },
   {
     id: "4",
     time: "10:00",
     title: "Budget Planning Session",
-    badge: {
-      text: "Finance",
-      color: getRandomBadgeColor(),
-    },
+    badges: [
+      {
+        text: "Finance",
+        color: getRandomBadgeColor(),
+      },
+      {
+        text: "Planning",
+        color: getRandomBadgeColor(),
+      },
+    ],
   },
   {
     id: "5",
     time: "13:30",
     title: "Design System Updates",
-    badge: {
-      text: "Design",
-      color: getRandomBadgeColor(),
-    },
+    badges: [
+      {
+        text: "Design",
+        color: getRandomBadgeColor(),
+      },
+    ],
   },
 ];
 
@@ -85,7 +111,9 @@ export default function HomeScreen() {
   const filteredItems = inboxItems.filter(
     (item) =>
       item.title.toLowerCase().includes(searchText.toLowerCase()) ||
-      item.badge.text.toLowerCase().includes(searchText.toLowerCase())
+      item.badges.some((badge) =>
+        badge.text.toLowerCase().includes(searchText.toLowerCase())
+      )
   );
 
   // 플로팅 버튼 클릭 핸들러
@@ -118,21 +146,24 @@ export default function HomeScreen() {
         translucent={false}
       />
 
-      <SafeAreaView style={styles.container}>
+      {/* 상단 Safe Area - 헤더 색상 */}
+      <SafeAreaView style={styles.topSafeArea}>
         {/* 헤더 */}
         <View style={styles.header}>
           <View style={styles.headerContent}>
             <Text style={styles.title}>Smart Inbox</Text>
-            <Button
+            <TouchableOpacity
               style={styles.settingsButton}
-              variant="bordered"
               onPress={() => console.log("Settings")}
             >
               <Ionicons name="settings-outline" size={20} color="#ffffff" />
-            </Button>
+            </TouchableOpacity>
           </View>
         </View>
+      </SafeAreaView>
 
+      {/* 하단 Safe Area - 콘텐츠 색상 */}
+      <SafeAreaView style={styles.bottomSafeArea}>
         {/* 검색창 */}
         <SearchInput value={searchText} onChangeText={setSearchText} />
 
@@ -169,9 +200,12 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  topSafeArea: {
+    backgroundColor: "#111111",
+  },
+  bottomSafeArea: {
     flex: 1,
-    backgroundColor: "#111111", // Safe Area 배경색을 헤더와 동일하게
+    backgroundColor: "transparent",
   },
   header: {
     backgroundColor: "#111111",
@@ -184,6 +218,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    minHeight: 40,
   },
   title: {
     fontSize: 24,
@@ -196,8 +231,14 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "transparent",
     borderColor: "#333333",
+    borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
+    margin: 0,
+    padding: 0,
+    display: "flex",
+    flexDirection: "row",
   },
   contentContainer: {
     flex: 1,

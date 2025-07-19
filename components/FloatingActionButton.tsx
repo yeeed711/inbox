@@ -21,7 +21,7 @@ export function FloatingActionButton({
       activeOpacity={0.8}
     >
       <LinearGradient
-        colors={["rgba(59, 130, 246, 0.2)", "rgba(96, 165, 250, 0.2)"]}
+        colors={["rgba(59, 130, 246, 0.8)", "rgba(96, 165, 250, 0.8)"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={styles.fab}
@@ -35,7 +35,7 @@ export function FloatingActionButton({
 const styles = StyleSheet.create({
   fabContainer: {
     position: "absolute",
-    bottom: 24,
+    bottom: 40,
     left: "50%",
     marginLeft: -28, // width의 절반만큼 왼쪽으로 이동
     width: 56,

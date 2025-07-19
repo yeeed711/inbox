@@ -1,9 +1,9 @@
-import { InboxItem } from "@/types";
+import { InboxItemType } from "@/types";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface InboxItemProps {
-  item: InboxItem;
+  item: InboxItemType;
   onMorePress: (itemId: string) => void;
 }
 
@@ -24,9 +24,14 @@ export function InboxItem({ item, onMorePress }: InboxItemProps) {
       <Text style={styles.itemTitle}>{item.title}</Text>
 
       <View style={styles.badgeContainer}>
-        <View style={[styles.badge, { backgroundColor: item.badge.color }]}>
-          <Text style={styles.badgeText}>{item.badge.text}</Text>
-        </View>
+        {item.badges.map((badge, index) => (
+          <View
+            key={index}
+            style={[styles.badge, { backgroundColor: badge.color }]}
+          >
+            <Text style={styles.badgeText}>#{badge.text}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -79,6 +84,8 @@ const styles = StyleSheet.create({
   badgeContainer: {
     flexDirection: "row",
     alignItems: "center",
+    flexWrap: "wrap",
+    gap: 8,
   },
   badge: {
     paddingHorizontal: 12,
